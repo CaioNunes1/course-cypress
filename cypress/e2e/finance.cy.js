@@ -28,8 +28,9 @@ describe('Transações', () => {//describe servindo para falar quais funcion vam
         //   .click() // clicar na imagem de excluir transação
         //    OU 
         cy.contains(".description","Freela")
-            .siblings()
-            .children()
+            .siblings()//outra maneira de procurar um elemento na tela, usando siblings e children
+            .children("img")
+            .click()
         cy.get("tbody tr").should("have.length",1)//navega pela linha de tbody que é o tr e verifica que só deve haver uma linha
     });
 });;
