@@ -16,6 +16,22 @@ describe('Transações', () => {//describe servindo para falar quais funcion vam
         criarTransacao("Cinema",-20)
         cy.get("tbody tr td.description").should('have.text', "Cinema")
     });
+
+
+    it('Excluir  Transação', () => {
+        criarTransacao("Freela",100)
+        criarTransacao("Mesada",10)
+
+        // cy.contains(".description","Freela")//no html encontre uma classe chamada description
+        //   .parent()//a partir do elemento pai dela
+        //   .find("img")//encontre a imagem, que no qual é imagem de excluir
+        //   .click() // clicar na imagem de excluir transação
+        //    OU 
+        cy.contains(".description","Freela")
+            .siblings()
+            .children()
+        cy.get("tbody tr").should("have.length",1)//navega pela linha de tbody que é o tr e verifica que só deve haver uma linha
+    });
 });;
 
 function criarTransacao(descricao,valor){
